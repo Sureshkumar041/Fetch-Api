@@ -1,0 +1,87 @@
+body{
+    background-color: lightskyblue;
+}
+
+#row1{
+    height: 100vh;
+}
+#heading{
+    background-color: lightskyblue;
+    height: 10vh;
+    width: 100%;
+}
+#searchdiv{
+    height: 15vh;
+}
+#adddata{
+    height: 15vh;
+}
+input{
+    height: 7vh;
+}
+
+#main-div{
+    max-width: 80%;
+}
+table{
+    border: 1px solid darkcyan;
+    min-width: max-content;
+    color: darkcyan;
+    background-color: white;
+}
+th{
+    background-color: darkcyan;
+    border: 1px solid white;
+    color: white;
+    position: sticky;
+    top: 0px;
+}
+th,td{
+    padding: 10px;    
+}
+#container{
+    max-height: 300px;
+    max-width: 87%;
+    overflow-x: scroll;
+    margin-left: 6%;
+}
+.container th:nth-child(1){
+    position: sticky;
+    left: 0%;
+    background-color: darkcyan;
+    z-index: 1;
+}
+.container th:nth-child(7){
+    position: sticky;
+    left: 3%;
+    background-color: darkcyan;
+    z-index: 1;
+}
+.container  td:nth-child(1){
+    position: sticky;
+    left: 0%;
+    background-color: white;
+}
+.container  td:nth-child(7){
+    position: sticky;
+    left: 3%;
+    background-color: white;
+    border: 1px solid darkcyan;
+}
+#edit{
+    color: lime;
+}
+i{
+    font-size: 20%;
+    cursor: pointer;
+}
+#adduser{
+    height: 5vh;
+    margin-left: 72%;
+    margin-top: 5%;
+    color: darkcyan;
+}
+/* Edit & Add form */
+#forms{
+    display: none;
+}
