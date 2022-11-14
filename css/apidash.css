@@ -51,7 +51,7 @@ th,td{
     background-color: darkcyan;
     z-index: 1;
 }
-.container th:nth-child(7){
+.container th:nth-child(6){
     position: sticky;
     left: 3%;
     background-color: darkcyan;
@@ -62,7 +62,7 @@ th,td{
     left: 0%;
     background-color: white;
 }
-.container  td:nth-child(7){
+.container  td:nth-child(6){
     position: sticky;
     left: 3%;
     background-color: white;
@@ -78,10 +78,13 @@ i{
 #adduser{
     height: 5vh;
     margin-left: 72%;
-    margin-top: 5%;
     color: darkcyan;
 }
 /* Edit & Add form */
 #forms{
     display: none;
 }
+#submitDiv{
+    visibility: visible;
+}
+

@@ -32,11 +32,6 @@ form.addEventListener('submit', e => {
     passData();
 });
 
-
-
-
-
-
 async function passData() {
     alert("Doneee");
     try {
