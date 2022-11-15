@@ -20,6 +20,8 @@ var tbody;
 // }
 // defaulfData();
 
+
+// Ajax Method
 async function ajaxMethod() {
     try {
         xhr = new XMLHttpRequest();
@@ -29,7 +31,6 @@ async function ajaxMethod() {
             if (xhr.status > 199 && xhr.status < 300) {
                 console.log("Get request successfully !");
                 data = JSON.parse(this.response);
-                console.log("Data Parse: ", data);
                 tableShow(data);
             }
             else console.log("S");
@@ -45,8 +46,6 @@ ajaxMethod();
 // Table creation
 try {
     tableShow = (data) => {
-        // console.log("Passed Api Data: ", data[0].address.geo.lat);
-        console.log("ADD USER DATA: ", data);
         tbody = document.getElementById("tbody");
         data.forEach(element => {
             var newRow = tbody.insertRow();
@@ -84,24 +83,19 @@ try {
             cell.innerHTML = element.company.bs;
         });
         var tbody = document.getElementById("tbody");
-        // console.log("TBODY: ",tbody);
         var tr = tbody.querySelectorAll("tr");
-        // console.log("ROW TR : ", tr);
-
         var tabledata = [];
         tr.forEach(element => {
             tabledata.push(element);
         });
         tableData(tabledata);
-        // console.log("TABLE DATA: ", tabledata);
     }
 } catch (error) {
     console.log(error);
 }
 
+// Edit Function => edit already exists data => Get Method
 onEdit = (row) => {
-    // alert("Edit");
-    // document.getElementById("submitBtn").disabled = true;
     document.getElementById("updateBtn").style.display = "";
     document.getElementById("submitBtn").style.display = "none";
     document.getElementById("submitDiv").style.display = "none";
@@ -110,10 +104,7 @@ onEdit = (row) => {
     document.getElementById("righttable").style.display = "none";
     document.getElementById("forms").style.display = "block";
     rowindex = row.parentNode.parentNode.rowIndex;
-    console.log("ROW EDIT INDEX: ", rowindex);
     posturl = "https://jsonplaceholder.typicode.com/users/" + rowindex;
-    console.log("URL PUT: ", url);
-
     try {
         xhr = new XMLHttpRequest();
         xhr.onload = function () {
@@ -121,7 +112,6 @@ onEdit = (row) => {
                 console.log("Get request successfully !");
                 data = JSON.parse(this.response);
                 console.log("DITING DATA: ", data.username);
-
                 document.getElementById("name").value = data.name;
                 document.getElementById("username").value = data.username;
                 document.getElementById("email").value = data.email;
@@ -136,9 +126,6 @@ onEdit = (row) => {
                 document.getElementById("cmpyname").value = data.company.name;
                 document.getElementById("catchphrase").value = data.company.catchPhrase;
                 document.getElementById("cmpybs").value = data.company.bs;
-                // tableShow(data);
-                // addData(data, posturl);
-                // onSubmit(data, posturl);
             }
             else throw new Error("Get request unsuccessfull !");
         };
@@ -147,15 +134,13 @@ onEdit = (row) => {
     } catch (error) {
         console.log(error);
     }
-    // return rowindex,posturl;
 }
 
+// Delete Function => Deleting particular data => Delete Method
 onDelete = (r) => {
-    alert("Delete");
+    // alert("Delete");
     row = r.parentNode.parentNode.rowIndex;
-    console.log("ROW DELETE INDEX: ", row);
     url = "https://jsonplaceholder.typicode.com/users/" + row;
-    console.log("URL DELETE: ", url);
     var id = document.getElementById("table").rows[row].cells[0].innerHTML;
     console.log("USER ID: ", id);
 
@@ -175,18 +160,16 @@ onDelete = (r) => {
             .then(data => console.log("DATA NEW: ", data))
             .catch(error => console.log(error))
         document.getElementById("table").deleteRow(row);
-        console.log("DEL LOOP: ", data);
         var deluser = data.findIndex(i => i.id == id);
-        console.log("Index of user in data: ", deluser);
         data.splice(deluser, 1);
     } else console.log("Deleting Process Cancelled !");
 }
 
 tableData = (tabledata) => {
-    console.log("Function tdata: ", tabledata);
+    // console.log("Function tdata: ", tabledata);
 }
 
-// Add Data
+// Add Data Function => Add new data in api => Post Method
 try {
     addData = (data, url) => {
         document.getElementById("submitBtn").style.display = "";
@@ -195,22 +178,19 @@ try {
         document.getElementById("rightdata").style.display = "none";
         document.getElementById("righttable").style.display = "none";
         document.getElementById("forms").style.display = "block";
-        console.log("Edit user: ", data);
-        console.log("API with id: ", url);
     }
 } catch (error) {
     console.log(error);
 }
-
+// Form submit => Prevent from auto submission 
 var form = document.getElementById("form");
 form.addEventListener('submit', e => {
     e.preventDefault();
 })
 
+// Update Function => Put method 
 onUpdate = () => {
     userinput = enteredInput();
-    console.log("ROWINDEX,POSTURL: ", rowindex, posturl);
-    console.log("Updates datas from func: ", userinput);
     alert("PUT METHOD START");
     try {
         fetch(posturl, {
@@ -250,23 +230,19 @@ onUpdate = () => {
         console.log(error);
     }
 
-    // posturl = url;
     console.log("Add data successfully");
-    // console.log("Coming row: ",onEdit());
     document.getElementById("forms").style.display = "none";
     document.getElementById("searchdiv").style.display = "";
     document.getElementById("rightdata").style.display = "";
     document.getElementById("righttable").style.display = "";
 }
 
+// Submit Function => Post Method => Adding data in API
 onSubmit = () => {
-    // console.log("POST URL: ",posturl);
     // alert("Submit Doneee...");
     // document.getElementById("searchdiv").style.display = "";
     // document.getElementById("rightdata").style.display = "";
     // document.getElementById("righttable").style.display = "";
-
-    // console.log("API DATA: ", data[0]);
 
     // try {
     //     xhr = new XMLHttpRequest();
@@ -290,8 +266,8 @@ onSubmit = () => {
     // } catch (error) {
     //     console.log(error);
     // }
+
     userinput = enteredInput();
-    console.log("Enterer data: ", userinput);
     alert("POST METHOD START");
     fetch("https://jsonplaceholder.typicode.com/users", {
         method: "POST",
@@ -348,11 +324,10 @@ onSubmit = () => {
         document.getElementById("searchdiv").style.display = "";
         document.getElementById("rightdata").style.display = "";
         document.getElementById("righttable").style.display = "";
-
     }
-
 }
 
+// Cancel Function => Close the Form
 onCancel = () => {
     alert("Cancel");
     document.getElementById("forms").style.display = "none";
@@ -361,6 +336,7 @@ onCancel = () => {
     document.getElementById("righttable").style.display = "";
 }
 
+// Entered Input => Object => Return User Input
 enteredInput = () => {
     var nameinput = document.getElementById("name").value.trim();
     var usernameinput = document.getElementById("username").value.trim();
@@ -400,6 +376,17 @@ enteredInput = () => {
             bs: cmpybsinput
         }
     }
-    console.log("User Input: ", userinput);
     return userinput;
 }
+
+// User Profile detail
+userProfile=()=>{
+    console.log("User profile");
+    document.getElementById("userdetails").style.display = "block";
+    document.getElementById("searchdiv").style.visibility = "hidden";  
+} 
+
+done=()=>{
+    document.getElementById("searchdiv").style.visibility = "visible";
+    document.getElementById("userdetails").style.display = "none";
+} 

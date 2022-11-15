@@ -1,90 +1,142 @@
-body{
+body {
     background-color: lightskyblue;
 }
 
-#row1{
+#row1 {
     height: 100vh;
 }
-#heading{
+
+#heading {
     background-color: lightskyblue;
     height: 10vh;
     width: 100%;
 }
-#searchdiv{
+
+#searchdiv {
     height: 15vh;
 }
-#adddata{
+
+#adddata {
     height: 15vh;
 }
-input{
+
+input {
     height: 7vh;
 }
 
-#main-div{
+#main-div {
     max-width: 80%;
 }
-table{
-    border: 1px solid darkcyan;
+
+table {
+    border: 1px solid black;
     min-width: max-content;
-    color: darkcyan;
+    color: rgb(31, 154, 211);
     background-color: white;
 }
-th{
-    background-color: darkcyan;
-    border: 1px solid white;
-    color: white;
+
+th {
+    background-color: lightskyblue;
+    border: 1px solid black;
+    color: black;
     position: sticky;
     top: 0px;
 }
-th,td{
-    padding: 10px;    
+
+th,
+td {
+    padding: 10px;
 }
-#container{
+
+#container {
+    background-color: lightskyblue;
     max-height: 300px;
     max-width: 87%;
     overflow-x: scroll;
     margin-left: 6%;
 }
-.container th:nth-child(1){
+
+.container th:nth-child(1) {
     position: sticky;
     left: 0%;
-    background-color: darkcyan;
+    background-color: lightskyblue;
+    border: 1px solid black;
     z-index: 1;
 }
-.container th:nth-child(6){
+
+.container th:nth-child(6) {
     position: sticky;
-    left: 3%;
-    background-color: darkcyan;
+    left: 4%;
+    background-color: lightskyblue;
     z-index: 1;
+    border: 1px solid black;    
 }
-.container  td:nth-child(1){
+
+.container td:nth-child(1) {
     position: sticky;
     left: 0%;
     background-color: white;
+    border: 1px solid black;
 }
-.container  td:nth-child(6){
+
+.container td:nth-child(6) {
     position: sticky;
-    left: 3%;
+    left: 4%;
     background-color: white;
-    border: 1px solid darkcyan;
+    border: 1px solid black;
 }
-#edit{
+
+#edit {
     color: lime;
 }
-i{
+
+i {
     font-size: 20%;
     cursor: pointer;
 }
-#adduser{
+
+#adduser {
     height: 5vh;
     margin-left: 72%;
     color: darkcyan;
 }
+
 /* Edit & Add form */
-#forms{
+#forms {
     display: none;
 }
-#submitDiv{
+
+#submitDiv {
     visibility: visible;
 }
 
+li:hover {
+    background-color: lightskyblue;
+}
+
+#userdetails{
+    z-index: 1;
+    width: 25%;
+    height: 23vh;
+    margin-top: 5px;
+    margin-bottom: -30%;
+    margin-left: 52%;
+    position: absolute;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-top: 7px;
+    background-color: palevioletred;
+    display: none;  
+}
+
+.userprofile{
+    width: 15%;
+    margin-left: 84%;
+}
+
+img {
+    width: 30%;
+    position: absolute;
+    margin-left: 62%;
+    margin-top: -20%;
+}

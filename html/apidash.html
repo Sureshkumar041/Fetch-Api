@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="row w-100" id="row1">
-        <div class="col-2 h-100 mx-2" id="c2">
+    <div class="row w-100 user-select-none" id="row1">
+        <div class="col-2 h-100 mx-2 bg-white" id="c2">
             <div class="h4 text-center mt-3 px-2 text-primary" id="heading">
                 API DASHBOARD
             </div>
+            <!-- NAvigation -->
             <div class="h-75 text-center text-white">
-                <ul class="nav flex-column mt-4 h-75 bg-white">
+                <ul class="nav flex-column mt-5 py-3 h-75 bg-white">
                     <li class="nav-item">
                       <a class="nav-link active text-dark" aria-current="page" href="#">Active</a>
                     </li>
@@ -33,20 +34,28 @@
             </div>
         </div>
         <div class="col-10 mt-2" id="main-div">
-            <div class="row h-10 w-100 bg-dark">
-                <p class="col-12 text-white text-end my-2"><i class="fa fa-user mx-2" style="font-size:1.5rem;"></i>Suresh kumar</p>
+            <!-- User Profile -->
+            <div class="row h-10 w-100 bg-dark cursor" id="">
+                <div class="userprofile shadow" onclick="userProfile()">
+                    <p class="col-12 text-white text-end my-2"><i class="fa fa-user mx-1" id="users" style="font-size:1.5rem;"></i>Suresh kumar</p>
+                </div>
             </div>
+            <div class="text-white userdetails" id="userdetails">
+                <p class="m-2 h6">User Name: Suresh Kumar <br> Role: Developer <br> Exp:Fresher</p>
+                <img src="/image/001.jpg" alt="" id="pic">
+                <button class="btn btn-primary my-2" onclick="done()">Done</button>
+            </div>
+            <!-- Search Data -->
             <div class="row display-flex justify-content-center align-items-center rightside" id="searchdiv">
-                <!-- <span class="input-group-addon w-50"><i class="fa fa-search" id="icon"></i></span> -->
                 <input type="text" class="form-control w-50" placeholder="search here">
-                <!-- <span class="input-group-addon w-50"><i class="fa fa-search text-secondary" id="icon"></i></span> -->
             </div>
+            <!-- Add new data -->
             <div class="row rightside" id="rightdata">
                 <div class="col text-center my-3" id="adduser">
-                    <!-- <p><i class="fa fa-user-plus"></i>Add Data</p> -->
                     <button class="btn bg-white" id="add" onclick="addData()"><i class="fa fa-user-plus px-2"></i>Add Data</button>
                 </div>
             </div>
+            <!-- Data submission form -->
             <div class="m-5" id="forms">
                 <form action="" class="form" id="form">
                     <div action="" class="input-group px-5">
@@ -84,47 +93,12 @@
                     </div>
                 </form>
             </div>
-            <!-- <div class="m-5" id="updateform">
-                <form action="" class="form" id="form">
-                    <div action="" class="input-group px-5">
-                        <input type="text" class="form-control mx-3" placeholder="Enter the name" id="name">
-                        <input type="text" class="form-control" placeholder="Enter the username" id="username">
-                    </div>
-                    <div action="" class="input-group px-5 mt-3">
-                        <input type="text" class="form-control mx-3" placeholder="example@gamil.com" id="email">
-                        <input type="text" class="form-control" placeholder="Enter the street" id="street">
-                    </div>
-                    <div action="" class="input-group px-5 mt-3">
-                        <input type="text" class="form-control mx-3" placeholder="Enter the suite" id="suite">
-                        <input type="text" class="form-control" placeholder="Enter the city" id="city">
-                    </div>
-                    <div action="" class="input-group px-5 mt-3">
-                        <input type="text" class="form-control mx-3" placeholder="Enter the zipcode" id="zipcode">
-                        <input type="text" class="form-control" placeholder="Enter the latitude" id="latitude">
-                    </div>
-                    <div action="" class="input-group px-5 mt-3">
-                        <input type="text" class="form-control mx-3" placeholder="Enter the Longitude" id="longitude">
-                        <input type="text" class="form-control" placeholder="Enter the phone number" id="phno">
-                    </div>
-                    <div action="" class="input-group px-5 mt-3">
-                        <input type="text" class="form-control mx-3" placeholder="Enter the webite domain" id="website">
-                        <input type="text" class="form-control" placeholder="Enter the company name" id="cmpyname">
-                    </div>
-                    <div action="" class="input-group px-5 mt-3">
-                        <input type="text" class="form-control mx-3" placeholder="Enter the compsny catchphrase" id="catchphrase">
-                        <input type="text" class="form-control" placeholder="Enter the company bs" id="cmpybs">
-                    </div>
-                    <div class="mt-4 d-flex justify-content-center">
-                        <button class="btn btn-success w-25 mx-3" type="submit" >Update</button>
-                        <button class="btn btn-secondary w-25" onclick="onCancel()">Cancel</button>
-                    </div>
-                </form>
-            </div> -->
+            <!-- Table -->
             <div class="row rightside" id="righttable">
                 <div class="container">
                     <div class="row text-center text-dark" id="container">
                         <table class="table-bordered" id="table">
-                            <thead class="bg-primary text-white">
+                            <thead class="text-white">
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>User Name</th>
