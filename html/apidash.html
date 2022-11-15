@@ -78,8 +78,8 @@
                         <input type="text" class="form-control" placeholder="Enter the company bs" id="cmpybs">
                     </div>
                     <div class="mt-4 d-flex justify-content-center" id="submitDiv">
-                        <button class="btn btn-success w-25 mx-3" type="submit" id="updateBtn" onclick="onUpdate()">Update</button>
-                        <button class="btn btn-primary w-25 mx-3" type="submit" id="submitBtn">Submit</button>
+                        <button class="btn btn-success w-25 mx-3" id="updateBtn" type="submit" onclick="onUpdate()">Update</button>
+                        <button class="btn btn-primary w-25 mx-3" type="submit" id="submitBtn" onclick="onSubmit()">Submit</button>
                         <button class="btn btn-secondary w-25" onclick="onCancel()">Cancel</button>
                     </div>
                 </form>
@@ -130,8 +130,8 @@
                                 <th>User Name</th>
                                 <th>Email</th>
                                 <th>Street</th>
+                                <th>Action</th>
                                 <th>Suite</th>
-                                <th>ACTION</th>
                                 <th>City</th>
                                 <th>Zipcode</th>
                                 <th>Geographic latitude</th>

@@ -1,7 +1,7 @@
 var url = "https://jsonplaceholder.typicode.com/users", posturl;
 console.log("JS Connected");
 var action = '<i class="fa fa-edit" id="edit" onclick="onEdit(this)"></i> <i class="fa fa-trash text-danger" onclick="onDelete(this)"></i>'
-var xhr, row, proms, data,userinput;
+var xhr, row, proms, data, userinput;
 var tbody;
 
 // async function defaulfData() {
@@ -117,8 +117,6 @@ onEdit = (row) => {
     try {
         xhr = new XMLHttpRequest();
         xhr.onload = function () {
-            // console.log("Data This: ",this.response);
-            // data = this.response; 
             if (xhr.status > 199 && xhr.status < 300) {
                 console.log("Get request successfully !");
                 data = JSON.parse(this.response);
@@ -149,7 +147,7 @@ onEdit = (row) => {
     } catch (error) {
         console.log(error);
     }
-    return rowindex;
+    // return rowindex,posturl;
 }
 
 onDelete = (r) => {
@@ -188,6 +186,7 @@ tableData = (tabledata) => {
     console.log("Function tdata: ", tabledata);
 }
 
+// Add Data
 try {
     addData = (data, url) => {
         document.getElementById("submitBtn").style.display = "";
@@ -206,44 +205,58 @@ try {
 var form = document.getElementById("form");
 form.addEventListener('submit', e => {
     e.preventDefault();
-    // console.log("Submit");
-    // // var form = document.querySelector('form');
-    // var formData = new FormData(form);
-    // for (var [key, value] of formData.entries()) { 
-    //     console.log(key, value);
-    //   }
-    // console.log("FD:",...formData) 
-    onSubmit();
 })
 
 onUpdate = () => {
     userinput = enteredInput();
-    console.log("Updates datas from func: ",userinput);
+    console.log("ROWINDEX,POSTURL: ", rowindex, posturl);
+    console.log("Updates datas from func: ", userinput);
     alert("PUT METHOD START");
-    fetch(posturl, {
-        method: "PUT",
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(userinput)
-    })
-        .then(response => {
-            if (response.ok) { console.log("PUT request successfully"); }
-            else { throw new Error("PUT request unsuccessfully"); }
-            return response;
+    try {
+        fetch(posturl, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userinput)
         })
-        .then(response => response.json())
-        .then(data => console.log("EDITED DATA: ", data));
+            .then(response => {
+                if (response.ok) console.log("PUT request successfully");
+                else throw new Error("PUT request unsuccessfully");
+                return response;
+            })
+            .then(response => response.json())
+            .then(data => putMethod(data))
+        putMethod = (data) => {
+            var cells = document.getElementById("table").rows[rowindex].cells;
+            cells[5].innerHTML = data.name;
+            cells[1].innerHTML = data.name;
+            cells[2].innerHTML = data.username;
+            cells[3].innerHTML = data.email;
+            cells[4].innerHTML = data.address.street;
+            cells[5].innerHTML = action;
+            cells[6].innerHTML = data.address.suite;
+            cells[7].innerHTML = data.address.city;
+            cells[8].innerHTML = data.address.zipcode;
+            cells[9].innerHTML = data.address.geo.lat;
+            cells[10].innerHTML = data.address.geo.lng;
+            cells[11].innerHTML = data.phone;
+            cells[12].innerHTML = data.website;
+            cells[13].innerHTML = data.company.name;
+            cells[14].innerHTML = data.company.catchPhrase;
+            cells[15].innerHTML = data.company.bs;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
     // posturl = url;
     console.log("Add data successfully");
-    console.log("Coming row: ",onEdit());
+    // console.log("Coming row: ",onEdit());
     document.getElementById("forms").style.display = "none";
     document.getElementById("searchdiv").style.display = "";
     document.getElementById("rightdata").style.display = "";
     document.getElementById("righttable").style.display = "";
-    console.log("url changes: ", posturl);
-    // return true;
-    if( 1 ==1) return true;
 }
 
 onSubmit = () => {
@@ -252,7 +265,7 @@ onSubmit = () => {
     // document.getElementById("searchdiv").style.display = "";
     // document.getElementById("rightdata").style.display = "";
     // document.getElementById("righttable").style.display = "";
-    
+
     // console.log("API DATA: ", data[0]);
 
     // try {
@@ -278,7 +291,7 @@ onSubmit = () => {
     //     console.log(error);
     // }
     userinput = enteredInput();
-    console.log("Enterer data: ",userinput);
+    console.log("Enterer data: ", userinput);
     alert("POST METHOD START");
     fetch("https://jsonplaceholder.typicode.com/users", {
         method: "POST",
@@ -348,7 +361,7 @@ onCancel = () => {
     document.getElementById("righttable").style.display = "";
 }
 
-enteredInput=()=>{
+enteredInput = () => {
     var nameinput = document.getElementById("name").value.trim();
     var usernameinput = document.getElementById("username").value.trim();
     var emailinput = document.getElementById("email").value.trim();
